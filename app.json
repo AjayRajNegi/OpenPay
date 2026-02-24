@@ -3,6 +3,7 @@
     "name": "OpenPay",
     "slug": "OpenPay",
     "version": "1.0.0",
+    "scheme": "openpay",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -21,10 +22,19 @@
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.ajayrajnegi.OpenPay"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": ["expo-router"],
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "e8503596-f994-4f80-9e9d-04fb9e78db26"
+      }
+    },
+    "owner": "ajayrajnegi"
   }
 }
