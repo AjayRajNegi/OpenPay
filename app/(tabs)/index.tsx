@@ -1,18 +1,33 @@
 import { useRouter } from "expo-router";
 import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 import { useWalletStore } from "../../src/stores/wallet-store";
-import Headers from "../../src/components/general/Headers.tsx";
+import Headers from "../../src/components/general/Headers";
 import Balance from "../../src/components/home/Balance";
+import RevenueToday from "../../src/components/home/RevenueToday";
+import RecentTransactions from "../../src/components/home/RecentTransactions";
+import MainButtons from "../../src/components/home/MainButtons";
 
 export default function Tab() {
   const router = useRouter();
 
   const isDevnet = useWalletStore((s) => s.isDevnet);
+  const isMerchant = useWalletStore((s) => s.isMerchant);
+  console.log(isMerchant);
   return (
     <>
       <View style={styles.container}>
         <Headers />
-        <Balance />
+        {isMerchant == true ? (
+          <>
+            <RevenueToday />
+          </>
+        ) : (
+          <>
+            <Balance />
+          </>
+        )}
+        <RecentTransactions />
+        <MainButtons />
       </View>
     </>
   );

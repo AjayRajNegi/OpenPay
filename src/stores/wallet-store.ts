@@ -5,8 +5,10 @@ import { createJSONStorage, persist } from "zustand/middleware";
 interface WalletStore {
   public: string;
   balance: number;
-  chainHealth: boolean;
   isDevnet: boolean;
+  isMerchant: boolean;
+  chainHealth: boolean;
+  revenueToday: number;
   transactionHistory: string[];
 
   toggleNetwork: () => void;
@@ -21,7 +23,9 @@ export const useWalletStore = create<WalletStore>()(
       public: "",
       balance: 0,
       isDevnet: true,
+      isMerchant: true,
       chainHealth: true,
+      revenueToday: 0.45,
       transactionHistory: [],
 
       addToHistory: (address) =>
