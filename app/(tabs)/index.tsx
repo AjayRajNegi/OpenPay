@@ -40,7 +40,6 @@ export default function Tab() {
           </>
         )}
         <RecentTransactions />
-        <MainButtons />
       </View>
     </ScrollView>
   );

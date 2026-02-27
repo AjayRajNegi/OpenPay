@@ -13,11 +13,14 @@ import Button from "../../src/components/general/Button";
 import { Dropdown } from "react-native-element-dropdown";
 import { Dispatch, SetStateAction, useState } from "react";
 import { useTheme } from "../../utils/themes/ThemeContext";
+import { useRouter } from "expo-router";
 
 export default function send() {
   const [selectedCurrency, setSelectedCurrency] = useState(currencies[0]);
 
   const pubKey = "EmzwsPbxRnTE2Du3Tj6Q7wU9v4xSsYS28csGDor3Md32";
+
+  const router = useRouter();
 
   const styles = useStyles(createStyles);
 
@@ -57,6 +60,7 @@ export default function send() {
             label="Scan QR"
             iconName="qr-code-outline"
             style={{ flex: 1, paddingVertical: 20, borderRadius: 32 }}
+            onPress={() => router.navigate("/(e)/qr")}
           />
           <Button
             label="NFC"
