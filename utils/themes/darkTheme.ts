@@ -36,4 +36,7 @@ export const darkTheme = {
       text: blue[500],
     },
   },
+  borderColor: {
+    primary: blue[950],
+  },
 };

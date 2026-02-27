@@ -29,7 +29,7 @@ export default function TabLayout() {
         options={{
           title: "Home",
           tabBarIcon: ({ color, focused }) => (
-            <TabIcon name="home-sharp" color={color} focused={focused} />
+            <TabIcon name="home" color={color} focused={focused} />
           ),
         }}
       />
@@ -83,6 +83,7 @@ function TabIcon({
   color: string;
   focused: boolean;
 }) {
+  const { theme } = useTheme();
   return (
     <View
       style={{
@@ -91,7 +92,7 @@ function TabIcon({
         width: 60,
         height: 32,
         borderRadius: 16,
-        backgroundColor: focused ? "#1E3A5F" : "transparent",
+        backgroundColor: focused ? theme.navbar.active.bg : "transparent",
       }}
     >
       <Ionicons
