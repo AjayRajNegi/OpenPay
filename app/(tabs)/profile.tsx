@@ -1,4 +1,4 @@
-import Headers from "../../src/components/general/Headers";
+import Headers from "../../src/components/general/Header";
 import { useLocalSearchParams } from "expo-router";
 import React, { useState, useEffect, useCallback } from "react";
 import {
@@ -57,7 +57,6 @@ export default function profile() {
 
   return (
     <View style={{ backgroundColor: "black", width: "100%", height: "100%" }}>
-      <Headers />
       <View style={{ backgroundColor: "black" }}>
         <Text style={{ color: "white" }}>{amount}</Text>
         <Text style={{ color: "white" }}>{recipient}</Text>

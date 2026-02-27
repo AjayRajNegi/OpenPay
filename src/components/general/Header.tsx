@@ -4,7 +4,7 @@ import { useWalletStore } from "../../stores/wallet-store";
 import { useTheme } from "../../../utils/themes/ThemeContext";
 import { AppTheme } from "../../../utils/themes/types";
 
-export default function Headers() {
+export default function Header() {
   const [TPS, setTPS] = useState<number | null>(null);
   const chainHealth = useWalletStore((s) => s.chainHealth);
   const toggleHealth = useWalletStore((s) => s.toggleChainHealth);
@@ -83,11 +83,13 @@ export default function Headers() {
 function createStyles(theme: AppTheme) {
   return StyleSheet.create({
     container: {
-      height: 72,
+      height: 54,
       width: "100%",
       flexDirection: "row",
       alignItems: "center",
       justifyContent: "space-between",
+      paddingHorizontal: 14,
+      paddingVertical: 10,
     },
 
     logo: {

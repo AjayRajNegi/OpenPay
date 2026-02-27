@@ -38,7 +38,11 @@ export default function RecentTransactions() {
                 <View
                   style={[
                     styles.statusDot,
-                    { backgroundColor: item.send ? "#22c55e" : "#ef4444" },
+                    {
+                      backgroundColor: item.send
+                        ? theme.status.success
+                        : theme.status.error,
+                    },
                   ]}
                 />
                 <Text style={styles.mint}>fg4...98h</Text>
@@ -71,18 +75,17 @@ function createStyles(theme: AppTheme) {
   return StyleSheet.create({
     container: {
       backgroundColor: theme.bgColor.secondary,
-      padding: 12,
+      padding: 14,
       borderRadius: 20,
       width: "100%",
       color: theme.textColor.primary,
-      marginVertical: 20,
+      gap: 14,
     },
     title: {
       color: theme.textColor.primary,
       fontSize: 16,
       fontWeight: 500,
       letterSpacing: 0,
-      marginBottom: 20,
     },
     row: {
       flexDirection: "row",
