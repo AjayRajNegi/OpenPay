@@ -29,29 +29,31 @@ const APP_IDENTITY = {
 // openpay:///profile?amount=0.5&recipient=HShenUMSPvcDDGuRipU7UariTLVr5eUN4rfrKa5UrqF6
 //HShenUMSPvcDDGuRipU7UariTLVr5eUN4rfrKa5UrqF6
 
-function onConnect(publicKey: PublicKey, authToken: string): void {
-  console.log("Helllo");
-  console.log(publicKey, authToken);
-  return;
-}
-function onError(error: Error): void {
-  console.log(error);
-}
-
 async function log(recipientAddr: string, amountInSol: number) {
   const log = await transferSol(recipientAddr, amountInSol);
   console.log("log", log);
 }
+transferSol("7eCr2hyPdmeaJ84hqobHHSKqSSpUp4m79AADVT8eZcn9", 0.0002);
 
 export default function profile() {
   const params = useLocalSearchParams();
-  // const [amount, setAmount] = useState(0);
-  // const [recipient, setRecipient] = useState("");
 
-  // useEffect(() => {
-  //   if (params.amount) setAmount(Number(params.amount));
-  //   if (params.recipient) setRecipient(String(params.recipient));
-  // }, [params]);
+  function onConnect(publicKey: PublicKey, authToken: string): void {
+    console.log("Helllo");
+    console.log(publicKey, authToken);
+    return;
+  }
+  function onError(error: Error): void {
+    console.log(error);
+  }
+
+  const [amount, setAmount] = useState(0);
+  const [recipient, setRecipient] = useState("");
+
+  useEffect(() => {
+    if (params.amount) setAmount(Number(params.amount));
+    if (params.recipient) setRecipient(String(params.recipient));
+  }, [params]);
 
   // const amount = params.amount ? Number(params.amount) : 0;
   // const recipient = params.recipient ? String(params.recipient) : "";
