@@ -31,39 +31,46 @@ export default function RecentTransactions() {
             style={styles.row}
             onPress={() => Linking.openURL(`https://solscan.io/tx/${item.sig}`)}
           >
-            <View>
-              <View
-                style={{ flexDirection: "row", alignItems: "center", gap: 4 }}
-              >
-                <View
-                  style={[
-                    styles.statusDot,
-                    {
-                      backgroundColor: item.send
-                        ? theme.status.success
-                        : theme.status.error,
-                    },
-                  ]}
-                />
-                <Text style={styles.mint}>fg4...98h</Text>
-              </View>
-              <Text style={styles.time}>12:45</Text>
-            </View>
-            <Text
+            <View
               style={{
-                display: "flex",
-                justifyContent: "flex-end",
-                marginTop: 14,
-                color: theme.textColor.secondary,
-                fontSize: 10,
-                backgroundColor: theme.bgColor.primary,
-                paddingVertical: 4,
-                paddingHorizontal: 12,
-                borderRadius: 12,
+                flexDirection: "row",
+                alignItems: "center",
+                gap: 10,
               }}
             >
-              View
-            </Text>
+              <View
+                style={[
+                  styles.statusDot,
+                  {
+                    backgroundColor: item.send
+                      ? theme.status.success
+                      : theme.status.error,
+                  },
+                ]}
+              />
+              <View>
+                <Text style={styles.mint}>fg4...98h</Text>
+                <Text style={styles.time}>12:45</Text>
+              </View>
+            </View>
+            <View
+              style={{
+                paddingHorizontal: 14,
+                paddingVertical: 6,
+                borderRadius: 100,
+                borderWidth: 1,
+                borderColor: theme.borderColor.primary,
+              }}
+            >
+              <Text
+                style={{
+                  color: theme.textColor.primary,
+                  fontSize: 12,
+                }}
+              >
+                View
+              </Text>
+            </View>
           </TouchableOpacity>
         )}
       />
@@ -84,23 +91,22 @@ function createStyles(theme: AppTheme) {
     title: {
       color: theme.textColor.primary,
       fontSize: 16,
-      fontWeight: 500,
+      fontWeight: "500",
       letterSpacing: 0,
     },
     row: {
       flexDirection: "row",
       justifyContent: "space-between",
       alignItems: "center",
-      paddingVertical: 10,
-      paddingHorizontal: 12,
+      padding: 14,
       borderRadius: 14,
       marginBottom: 10,
       borderWidth: 0.5,
       borderColor: theme.borderColor.primary,
     },
     statusDot: {
-      width: 10,
-      height: 10,
+      width: 12,
+      height: 12,
       borderRadius: 6,
     },
     mint: {
