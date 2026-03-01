@@ -4,10 +4,15 @@ import { StatusBar } from "expo-status-bar";
 import { Pressable, SafeAreaView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import QRScan from "../../src/components/general/QRScan";
+import { useEffect } from "react";
 
 export default function QR() {
   const [permission, requestPermission] = useCameraPermissions();
   const isPermissionGranted = Boolean(permission?.granted);
+
+  useEffect(() => {
+    requestPermission;
+  });
 
   return (
     <SafeAreaProvider style={styleSheet.container}>

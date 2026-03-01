@@ -1,13 +1,19 @@
 {
   "lockfileVersion": 1,
+  "configVersion": 0,
   "workspaces": {
     "": {
       "name": "openpay",
       "dependencies": {
         "@craftzdog/react-native-buffer": "^6.1.1",
         "@react-native-async-storage/async-storage": "^2.2.0",
+<<<<<<< HEAD
         "@solana-mobile/mobile-wallet-adapter-protocol": "^2.2.5",
         "@solana-mobile/mobile-wallet-adapter-protocol-web3js": "^2.2.5",
+=======
+        "@solana-mobile/mobile-wallet-adapter-protocol": "2.2.5",
+        "@solana-mobile/mobile-wallet-adapter-protocol-web3js": "2.2.5",
+>>>>>>> upstream/main
         "@solana/web3.js": "^1.98.4",
         "expo": "~54.0.33",
         "expo-camera": "~17.0.10",
@@ -16,7 +22,13 @@
         "expo-linking": "~8.0.11",
         "expo-router": "~6.0.23",
         "expo-status-bar": "~3.0.9",
+<<<<<<< HEAD
         "react": "19.1.0",
+=======
+        "lru-cache": "^11.2.6",
+        "react": "^19.1.0",
+        "react-dom": "^19.1.0",
+>>>>>>> upstream/main
         "react-native": "0.81.5",
         "react-native-element-dropdown": "^2.12.4",
         "react-native-get-random-values": "1.11.0",
@@ -1452,6 +1464,10 @@
 
     "@wallet-standard/errors/commander": ["commander@13.1.0", "", {}, "sha512-/rFeCpNJQbhSZjGVwO9RFV3xPqbnERS8MmIQzCtD/zl6gpJuV/bMLuN92oG3F7d8oDEHHRrujSXNUr8fpjntKw=="],
 
+    "@wallet-standard/errors/chalk": ["chalk@5.6.2", "", {}, "sha512-7NzBL0rN6fMUW+f7A6Io4h40qQlG+xGmtMxfbnH/K7TAtt8JQWVQK+6g0UXKMeVJoyV5EkkNsErQ8pVD3bLHbA=="],
+
+    "@wallet-standard/errors/commander": ["commander@13.1.0", "", {}, "sha512-/rFeCpNJQbhSZjGVwO9RFV3xPqbnERS8MmIQzCtD/zl6gpJuV/bMLuN92oG3F7d8oDEHHRrujSXNUr8fpjntKw=="],
+
     "ansi-escapes/type-fest": ["type-fest@0.21.3", "", {}, "sha512-t0rzBq87m3fVcduHDUFhKmyyX+9eo6WQjZvf51Ea/M0Q7+T374Jp1aUiyUl0GKxp8M/OETVHSDvmkyPgvX+X2w=="],
 
     "anymatch/picomatch": ["picomatch@2.3.1", "", {}, "sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA=="],
@@ -1650,7 +1666,11 @@
 
     "@solana/codecs-numbers/@solana/errors/chalk": ["chalk@5.6.2", "", {}, "sha512-7NzBL0rN6fMUW+f7A6Io4h40qQlG+xGmtMxfbnH/K7TAtt8JQWVQK+6g0UXKMeVJoyV5EkkNsErQ8pVD3bLHbA=="],
 
+<<<<<<< HEAD
     "@solana/codecs-numbers/@solana/errors/commander": ["commander@14.0.3", "", {}, "sha512-H+y0Jo/T1RZ9qPP4Eh1pkcQcLRglraJaSLoyOtHxu6AapkjWVCy2Sit1QQ4x3Dng8qDlSsZEet7g5Pq06MvTgw=="],
+=======
+    "@solana/codecs-numbers/@solana/errors/commander": ["commander@14.0.1", "", {}, "sha512-2JkV3gUZUVrbNA+1sjBOYLsMZ5cEEl8GTFP2a4AVz5hvasAMCQ1D2l2le/cX+pV4N6ZU17zjUahLpIXRrnWL8A=="],
+>>>>>>> upstream/main
 
     "@solana/web3.js/bs58/base-x": ["base-x@3.0.11", "", { "dependencies": { "safe-buffer": "^5.0.1" } }, "sha512-xz7wQ8xDhdyP7tQxwdteLYeFfS68tSMNCZ/Y37WJ4bhGfKPpqEIlmIyueQHqOyoPhE6xNUqjzRr8ra0eF9VRvA=="],
 

@@ -1,103 +1,91 @@
-import React, { useState, useCallback } from "react";
 import {
   TouchableOpacity,
   Text,
-  ActivityIndicator,
   StyleSheet,
-  Alert,
+  ActivityIndicator,
+  View,
 } from "react-native";
-import {
-  transact,
-  Web3MobileWallet,
-} from "@solana-mobile/mobile-wallet-adapter-protocol-web3js";
-import { PublicKey } from "@solana/web3.js";
-import { toByteArray } from "react-native-quick-base64";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Ionicons } from "@expo/vector-icons";
 
-const APP_IDENTITY = {
-  name: "OpenPay",
-  uri: "openpay://",
-  icon: "favicon.ico",
-};
-
-interface ConnectButtonProps {
-  onConnect: (publicKey: PublicKey, authToken: string) => void;
-  onError: (error: Error) => void;
+interface Props {
+  connected: boolean;
+  connecting: boolean;
+  publicKey: string | null;
+  onConnect: () => void;
+  onDisconnect: () => void;
 }
 
-export function ConnectButton({ onConnect, onError }: ConnectButtonProps) {
-  const [connecting, setConnecting] = useState(false);
+export function ConnectButton({
+  connected,
+  connecting,
+  publicKey,
+  onConnect,
+  onDisconnect,
+}: Props) {
+  if (connecting) {
+    return (
+      <View style={[styles.button, styles.connecting]}>
+        <ActivityIndicator size="small" color="#fff" />
+        <Text style={styles.buttonText}>Connecting...</Text>
+      </View>
+    );
+  }
 
-  const handleConnect = useCallback(async () => {
-    if (connecting) return;
-    setConnecting(true);
-
-    try {
-      const cachedToken = await AsyncStorage.getItem("mwa_auth_token");
-
-      await transact(async (wallet: Web3MobileWallet) => {
-        const authResult = await wallet.authorize({
-          identity: APP_IDENTITY,
-          chain: "solana:devnet",
-          auth_token: cachedToken ?? undefined,
-        });
-
-        await AsyncStorage.setItem("mwa_auth_token", authResult.auth_token);
-
-        const publicKey = new PublicKey(
-          toByteArray(authResult.accounts[0].address),
-        );
-
-        onConnect(publicKey, authResult.auth_token);
-        return;
-      });
-    } catch (error: any) {
-      if (error.message?.includes("timeout")) {
-        Alert.alert(
-          "Connection Timeout",
-          "The wallet took too long to respond. Make sure you have a Solana wallet installed.",
-          [{ text: "OK" }],
-        );
-      } else if (error.code === 4001) {
-        console.log("User cancelled connection");
-      } else {
-        onError(error);
-      }
-    } finally {
-      setConnecting(false);
-    }
-  }, [connecting, onConnect, onError]);
+  if (connected && publicKey) {
+    return (
+      <TouchableOpacity
+        style={[styles.button, styles.connected]}
+        onPress={onDisconnect}
+      >
+        <Ionicons name="wallet" size={18} color="#14F195" />
+        <Text style={styles.connectedText}>
+          {publicKey.slice(0, 4)}...{publicKey.slice(-4)}
+        </Text>
+        <Ionicons name="close-circle-outline" size={16} color="#888" />
+      </TouchableOpacity>
+    );
+  }
 
   return (
     <TouchableOpacity
-      style={[styles.button, connecting && styles.buttonDisabled]}
-      onPress={handleConnect}
-      disabled={connecting}
+      style={[styles.button, styles.disconnected]}
+      onPress={onConnect}
     >
-      {connecting ? (
-        <ActivityIndicator color="#fff" />
-      ) : (
-        <Text style={styles.buttonText}>Connect Wallet</Text>
-      )}
+      <Ionicons name="wallet-outline" size={18} color="#fff" />
+      <Text style={styles.buttonText}>Connect Wallet</Text>
     </TouchableOpacity>
   );
 }
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: "#512da8",
-    paddingHorizontal: 24,
-    paddingVertical: 12,
-    borderRadius: 8,
+    flexDirection: "row",
     alignItems: "center",
-    justifyContent: "center",
+    paddingHorizontal: 16,
+    paddingVertical: 10,
+    borderRadius: 20,
+    gap: 8,
   },
-  buttonDisabled: {
-    opacity: 0.6,
+  disconnected: {
+    backgroundColor: "#9945FF",
+  },
+  connected: {
+    backgroundColor: "#14F19520",
+    borderWidth: 1,
+    borderColor: "#14F195",
+  },
+  connecting: {
+    backgroundColor: "#333",
   },
   buttonText: {
     color: "#fff",
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: "600",
+  },
+  connectedText: {
+    color: "#14F195",
+    fontSize: 14,
+    fontWeight: "600",
+    fontFamily: "monospace",
   },
 });

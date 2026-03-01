@@ -229,3 +229,31 @@ function createStyles(theme: AppTheme) {
     },
   });
 }
+
+const styles = StyleSheet.create({
+  balance: {
+    marginBottom: 12,
+  },
+  camera: {
+    flexGrow: 1,
+  },
+  cameraContainer: {
+    height: "100%",
+  },
+  header: {
+    marginVertical: 12,
+    fontSize: 20,
+    fontWeight: "bold",
+    color: "white",
+  },
+  input: {
+    height: 40,
+    padding: 10,
+    borderWidth: 1,
+    backgroundColor: "white",
+    color: "black",
+  },
+  mainContainer: {
+    padding: 16,
+  },
+});

@@ -31,6 +31,18 @@ export const darkTheme = {
       text: black,
     },
   },
+  toogleBtn: {
+    active: {
+      bg: blue[700],
+      dot: blue[50],
+      shadow: slate[200],
+    },
+    inActive: {
+      bg: slate[400],
+      dot: blue[50],
+      shadow: slate[800],
+    },
+  },
   navbar: {
     default: {
       bg: blue[300],
